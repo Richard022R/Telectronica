@@ -29,6 +29,4 @@
       <a href="{{ route('pedidos.index') }}" class="btn btn-primary mb-3">Administrar pedidos</a>
     </div>
   </div>
-
-
 @endsection
