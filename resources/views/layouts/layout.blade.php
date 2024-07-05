@@ -12,10 +12,18 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand mx-auto" href="/">ELECTRONIC STORE</a>
+      <a class="navbar-brand" href="/">ELECTRONIC STORE</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.index') }}">Admin Panel</a>
+          </li>
+          <!-- Agrega más enlaces de navegación según sea necesario -->
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -27,3 +35,4 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+</html>

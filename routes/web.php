@@ -7,7 +7,9 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\DetallePedidoController;
+use App\Http\Controllers\AdminController;
 
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::resource('documentos', DocumentoVentaController::class);
 Route::get('clientes', 'App\Http\Controllers\ClienteController@index')->name('clientes.index');
 Route::get('clientes/crear', 'App\Http\Controllers\ClienteController@create')->name('clientes.create');
