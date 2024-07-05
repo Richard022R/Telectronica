@@ -9,7 +9,12 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\DetallePedidoController;
 
 Route::resource('documentos', DocumentoVentaController::class);
-Route::resource('clientes', ClienteController::class);
+Route::get('clientes', 'App\Http\Controllers\ClienteController@index')->name('clientes.index');
+Route::get('clientes/crear', 'App\Http\Controllers\ClienteController@create')->name('clientes.create');
+Route::get('clientes/{cliente}/editar', 'App\Http\Controllers\ClienteController@edit')->name('clientes.edit');
+Route::put('clientes/{cliente}', 'App\Http\Controllers\ClienteController@update')->name('clientes.update');
+Route::post('clientes', 'App\Http\Controllers\ClienteController@store')->name('clientes.store');
+Route::delete('clientes/{cliente}', 'App\Http\Controllers\ClienteController@destroy')->name('clientes.destroy');
 Route::get('categorias', 'App\Http\Controllers\CategoriaController@index')->name('categorias.index');
 Route::get('categorias/crear', 'App\Http\Controllers\CategoriaController@create')->name('categorias.create');
 Route::get('categorias/{categoria}/editar', 'App\Http\Controllers\CategoriaController@edit')->name('categorias.edit');
