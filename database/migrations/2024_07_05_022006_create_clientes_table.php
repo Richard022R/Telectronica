@@ -13,7 +13,7 @@ class CreateClientesTable extends Migration
             $table->string('nombreCliente');
             $table->string('email')->unique();
             $table->string('direccion');
-            $table->string('ruc');
+            $table->string('ruc')->nullable();
             $table->boolean('estadoCliente');
             $table->timestamps();
         });
