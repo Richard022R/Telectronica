@@ -15,5 +15,5 @@ Route::resource('clientes', ClienteController::class);
 Route::resource('categorias', CategoriaController::class);
 Route::resource('productos', ProductoController::class);
 Route::resource('pedidos', PedidoController::class);
-Route::resource('detalle-pedidos', DetallePedidoController::class);
+Route::resource('detallepedidos', DetallePedidoController::class);
 Route::view('/','home')->name('inicio');

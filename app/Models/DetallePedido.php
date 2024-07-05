@@ -22,4 +22,8 @@ class DetallePedido extends Model
     {
         return $this->belongsTo(Producto::class, 'idProducto');
     }
+    public function documento()
+    {
+        return $this->belongsTo(DocumentoVenta::class, 'idDocumento');
+    }
 }

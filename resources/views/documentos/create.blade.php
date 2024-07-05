@@ -5,14 +5,6 @@
     <form action="{{ route('documentos.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="idCliente">Cliente</label>
-            <select class="form-control" id="idCliente" name="idCliente" required>
-                @foreach($clientes as $cliente)
-                    <option value="{{ $cliente->idCliente }}">{{ $cliente->nombreCliente }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
             <label for="nombreDocumento">Tipo de Documento</label>
             <select class="form-control" id="nombreDocumento" name="nombreDocumento" required>
                 <option value="">Seleccione un tipo de documento</option>
