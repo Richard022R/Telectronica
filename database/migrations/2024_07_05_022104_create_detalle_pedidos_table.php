@@ -12,6 +12,7 @@ class CreateDetallePedidosTable extends Migration
             $table->id('idDetallePedido');
             $table->unsignedBigInteger('idPedido');
             $table->unsignedBigInteger('idProducto');
+            $table->unsignedBigInteger('idDocumento');
             $table->integer('cantidad');
             $table->decimal('precioUnitario', 8, 2);
             $table->decimal('importe', 8, 2);
