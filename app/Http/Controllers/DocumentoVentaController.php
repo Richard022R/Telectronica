@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DocumentoVenta;
 use Illuminate\Http\Request;
+use App\Models\DocumentoVenta;
+use App\Models\Cliente;
 
 class DocumentoVentaController extends Controller
 {
@@ -15,7 +16,8 @@ class DocumentoVentaController extends Controller
 
     public function create()
     {
-        return view('documentos.create');
+        $clientes = Cliente::all();
+        return view('documentos.create', compact('clientes'));
     }
 
     public function store(Request $request)
@@ -23,40 +25,15 @@ class DocumentoVentaController extends Controller
         $request->validate([
             'nombreDocumento' => 'required|string|max:255',
             'descripcionDocumento' => 'required|string',
+            'idCliente' => 'required|exists:clientes,idCliente',
         ]);
 
-        DocumentoVenta::create($request->all());
-        
-        return redirect()->route('documentos.index')
-                         ->with('success', 'Documento creado exitosamente.');
-    }
+        $documento = new DocumentoVenta();
+        $documento->nombreDocumento = $request->input('nombreDocumento');
+        $documento->descripcionDocumento = $request->input('descripcionDocumento');
+        $documento->idCliente = $request->input('idCliente');
+        $documento->save();
 
-    public function edit($id)
-    {
-        $documento = DocumentoVenta::findOrFail($id);
-        return view('documentos.edit', compact('documento'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nombreDocumento' => 'required|string|max:255',
-            'descripcionDocumento' => 'required|string',
-        ]);
-
-        $documento = DocumentoVenta::findOrFail($id);
-        $documento->update($request->all());
-
-        return redirect()->route('documentos.index')
-                         ->with('success', 'Documento actualizado exitosamente.');
-    }
-
-    public function destroy($id)
-    {
-        $documento = DocumentoVenta::findOrFail($id);
-        $documento->delete();
-
-        return redirect()->route('documentos.index')
-                         ->with('success', 'Documento eliminado exitosamente.');
+        return redirect()->route('documentos.index');
     }
 }

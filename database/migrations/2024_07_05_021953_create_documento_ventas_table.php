@@ -10,10 +10,9 @@ class CreateDocumentoVentasTable extends Migration
     {
         Schema::create('documento_ventas', function (Blueprint $table) {
             $table->id('idDocumento');
-            $table->unsignedBigInteger('idCliente');
-            $table->unsignedBigInteger('idDetallePedido');
             $table->string('nombreDocumento');
             $table->text('descripcionDocumento');
+            $table->unsignedBigInteger('idCliente')->nullable(); // Permite valores nulos
             $table->timestamps();
         });
     }
