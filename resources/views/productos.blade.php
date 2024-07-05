@@ -30,7 +30,7 @@
               <td>{{ $producto->stock }}</td>
               <td>{{ $producto->estadoProducto }}</td>
               <td>
-                <a href="{{ route('producto.edit', $producto) }}" class="btn btn-warning">Editar</a>
+                <a href="{{ route('productos.edit', $producto) }}" class="btn btn-warning">Editar</a>
                 <form action="{{ route('productos.destroy', $producto) }}" method="POST" style="display: inline;">
                   @csrf
                   @method('DELETE')
