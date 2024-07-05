@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cliente;
+use App\Models\DocumentoVenta;
+use App\Models\Pedido;
+use App\Http\Requests\CreateClienteRequest;
 
 class ClienteController extends Controller
 {
