@@ -12,7 +12,6 @@ class CreateDocumentoVentasTable extends Migration
             $table->id('idDocumento');
             $table->string('nombreDocumento');
             $table->text('descripcionDocumento');
-            $table->unsignedBigInteger('idCliente')->nullable(); // Permite valores nulos
             $table->timestamps();
         });
     }
