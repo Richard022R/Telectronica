@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Editar producto')
+@section('title', 'Editar categoria')
 
 @section('content')
     <!-- Formulario para editar categoria -->

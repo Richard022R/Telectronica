@@ -11,7 +11,7 @@ class CreateClienteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class CreateClienteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+
+            'nombreCliente' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'max:255'],
+            'direccion' => ['required', 'string', 'max:255'],
+            'ruc' => ['nullable', 'string', 'max:255'],
+            'estadoCliente' => ['required', 'string', 'max:255']
         ];
     }
 }
