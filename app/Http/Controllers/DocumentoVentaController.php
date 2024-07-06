@@ -26,4 +26,5 @@ class DocumentoVentaController extends Controller
         DocumentoVenta::create($request->validated());
         return redirect()->route('documentos.index');
     }
+    
 }
