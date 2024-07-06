@@ -11,7 +11,7 @@ class DetallePedido extends Model
 
     protected $table = 'detalle_pedidos';
     protected $primaryKey = 'idDetallePedido';
-    protected $fillable = ['idPedido', 'idProducto', 'cantidad', 'precioUnitario', 'importe'];
+    protected $fillable = ['idPedido', 'idProducto', 'idDocumento', 'cantidad', 'precioUnitario', 'importe'];
 
     public function pedido()
     {

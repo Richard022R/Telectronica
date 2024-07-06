@@ -4,36 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DocumentoVenta;
-use App\Models\Cliente;
+use App\Http\Requests\CreateDocumentoVentaRequest;
 
 class DocumentoVentaController extends Controller
 {
     public function index()
     {
-        $documentos = DocumentoVenta::all();
+        $documentos = DocumentoVenta::get();
         return view('documentos.index', compact('documentos'));
     }
 
     public function create()
     {
-        $clientes = Cliente::all();
-        return view('documentos.create', compact('clientes'));
+        return view('documentos.create', [
+            'documento' => new DocumentoVenta(),
+        ]);
     }
 
-    public function store(Request $request)
+    public function store(CreateDocumentoVentaRequest $request)
     {
-        $request->validate([
-            'nombreDocumento' => 'required|string|max:255',
-            'descripcionDocumento' => 'required|string',
-            'idCliente' => 'required|exists:clientes,idCliente',
-        ]);
-
-        $documento = new DocumentoVenta();
-        $documento->nombreDocumento = $request->input('nombreDocumento');
-        $documento->descripcionDocumento = $request->input('descripcionDocumento');
-        $documento->idCliente = $request->input('idCliente');
-        $documento->save();
-
+        DocumentoVenta::create($request->validated());
         return redirect()->route('documentos.index');
     }
 }

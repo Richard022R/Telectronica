@@ -31,7 +31,7 @@
                         <label for="idDocumento">Documento</label>
                         <select class="form-control" id="idDocumento" name="idDocumento">
                             @foreach($documentos as $documento)
-                                <option value="{{ $documento->idDocumento }}">{{ $documento->nombreDocumento }}</option>
+                                <option value="{{ $documento->idDocumento }}">{{ $documento->nombreDocumento }}{{ $documento->idDocumento }}</option>
                             @endforeach
                         </select>
                     </div>

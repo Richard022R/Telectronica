@@ -7,6 +7,7 @@ use App\Models\DetallePedido;
 use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\DocumentoVenta;
+use App\Http\Requests\CreateDetallePedidoRequest;
 
 class DetallePedidoController extends Controller
 {
@@ -16,7 +17,10 @@ class DetallePedidoController extends Controller
     public function index()
     {
         $detallesPedidos = DetallePedido::get();
-        return view('crear_detalle_pedido', compact('detallesPedidos'));
+        $pedidos = Pedido::get();
+        $productos = Producto::get();
+        $documentos = DocumentoVenta::get();
+        return view('crear_detalle_pedido', compact('detallesPedidos', 'pedidos', 'productos', 'documentos'));
     }
 
     /**
@@ -34,21 +38,10 @@ class DetallePedidoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateDetallePedidoRequest $request)
     {
-        $request->validate([
-            'idPedido' => 'required|exists:pedidos,idPedido',
-            'idProducto' => 'required|exists:productos,idProducto',
-            'idDocumento' => 'required|exists:documentos_venta,idDocumento',
-            'cantidad' => 'required|integer|min:1',
-            'precioUnitario' => 'required|numeric|min:0',
-            'importe' => 'required|numeric|min:0'
-        ]);
-
-        DetallePedido::create($request->all());
-
-        return redirect()->route('detallepedidos.index')
-            ->with('success', 'Detalle de pedido creado correctamente');
+        DetallePedido::create($request->validated());
+        return redirect()->route('detallepedidos.index');
     }
 
     /**
